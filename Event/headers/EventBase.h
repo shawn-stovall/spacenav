@@ -29,6 +29,11 @@ public:
     virtual bool run() = 0;
 
     EventBase(EventBase&& event) noexcept;
+
+    class Initializer {
+    protected:
+        Initializer() = default;
+    };
 };
 
 template<typename T>
