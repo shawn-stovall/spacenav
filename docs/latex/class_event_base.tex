@@ -1,0 +1,84 @@
+\doxysection{Event\+Base Class Reference}
+\hypertarget{class_event_base}{}\label{class_event_base}\index{EventBase@{EventBase}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_event_base_1_1_initializer}{Initializer}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_event_base_a41e12e0d92a511a763568e6d79445fe1}{register\+\_\+event}} (const \mbox{\hyperlink{class_event_id}{Event\+Id}} \&id)
+\item 
+bool \mbox{\hyperlink{class_event_base_ac5863a739b17ad572e9ce56dda8495a5}{unregister\+\_\+event}} (const \mbox{\hyperlink{class_event_id}{Event\+Id}} \&id)
+\item 
+\Hypertarget{class_event_base_a11e4b7d8e3d15d478a4fde338980e80a}\label{class_event_base_a11e4b7d8e3d15d478a4fde338980e80a} 
+\mbox{\hyperlink{class_event_id}{Event\+Id}} {\bfseries get\+\_\+id} () const
+\item 
+\Hypertarget{class_event_base_acf576cfd55310ed4af31ae882bec43b2}\label{class_event_base_acf576cfd55310ed4af31ae882bec43b2} 
+virtual bool {\bfseries run} ()=0
+\item 
+\mbox{\hyperlink{class_event_base_a3b8ea3995423f7e0c849ede19e49956b}{Event\+Base}} (\mbox{\hyperlink{class_event_base}{Event\+Base}} \&\&event) noexcept
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_event_base_a8c4fff3365a3dd5670b113bce3d1e968}{Event\+Base}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_event_base_a8c4fff3365a3dd5670b113bce3d1e968}\index{EventBase@{EventBase}!EventBase@{EventBase}}
+\index{EventBase@{EventBase}!EventBase@{EventBase}}
+\doxysubsubsection{\texorpdfstring{EventBase()}{EventBase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_event_base_a8c4fff3365a3dd5670b113bce3d1e968} 
+Event\+Base\+::\+Event\+Base (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+A constructor The default constructor for \doxylink{class_event_base}{Event\+Base} sets up the \doxylink{class_event_manager}{Event\+Manager} instance reference for usage in the derived class. \Hypertarget{class_event_base_a3b8ea3995423f7e0c849ede19e49956b}\index{EventBase@{EventBase}!EventBase@{EventBase}}
+\index{EventBase@{EventBase}!EventBase@{EventBase}}
+\doxysubsubsection{\texorpdfstring{EventBase()}{EventBase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_event_base_a3b8ea3995423f7e0c849ede19e49956b} 
+Event\+Base\+::\+Event\+Base (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_event_base}{Event\+Base}} \&\&}]{event}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+A constructor This is the move constructor for Events. The primary concern is moving the internal event list, as copying this could be quite a heavy operation. 
+\begin{DoxyParams}{Parameters}
+{\em event} & The event from which to move. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_event_base_a41e12e0d92a511a763568e6d79445fe1}\index{EventBase@{EventBase}!register\_event@{register\_event}}
+\index{register\_event@{register\_event}!EventBase@{EventBase}}
+\doxysubsubsection{\texorpdfstring{register\_event()}{register\_event()}}
+{\footnotesize\ttfamily \label{class_event_base_a41e12e0d92a511a763568e6d79445fe1} 
+bool Event\+Base\+::register\+\_\+event (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_event_id}{Event\+Id}} \&}]{id}{}\end{DoxyParamCaption})}
+
+This method registers an \doxylink{class_event_id}{Event\+Id} with the calling \doxylink{concept_event}{Event}. These IDs will be stored in an unordered fashion, and will be processed by the internal Tasks. 
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the event which needs to be connected. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If the registration was successful or not. 
+\end{DoxyReturn}
+\Hypertarget{class_event_base_ac5863a739b17ad572e9ce56dda8495a5}\index{EventBase@{EventBase}!unregister\_event@{unregister\_event}}
+\index{unregister\_event@{unregister\_event}!EventBase@{EventBase}}
+\doxysubsubsection{\texorpdfstring{unregister\_event()}{unregister\_event()}}
+{\footnotesize\ttfamily \label{class_event_base_ac5863a739b17ad572e9ce56dda8495a5} 
+bool Event\+Base\+::unregister\+\_\+event (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_event_id}{Event\+Id}} \&}]{id}{}\end{DoxyParamCaption})}
+
+This method unregisters an \doxylink{class_event_id}{Event\+Id} with the calling \doxylink{concept_event}{Event}. If the event ID exists and was unregistered successfully, returns true. 
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the event which needs to be disconnected. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If the unregistration unregistered anything. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Event/headers/Event\+Base.\+h\item 
+Event/Event\+Base.\+cpp\end{DoxyCompactItemize}
