@@ -16,13 +16,15 @@ set(EVENT_HDRS Event/headers/EventBase.h
 find_package(Boost REQUIRED)
 find_package(Catch2 3 REQUIRED)
 
-if(Boost_FOUND)
+if (Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
-endif()
+endif ()
 
 add_executable(tests test.cpp
         test.h
-        Event/headers/EventInitializer.h
+        "Event Manager/test_fixtures/DummyEvent.cpp"
+        "Event Manager/test_fixtures/headers/DummyEvent.h"
+        "Event Manager/test/EventManager_test.cpp"
 )
 target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
 add_executable(spacenav main.cpp
@@ -32,8 +34,17 @@ add_executable(spacenav main.cpp
         Event/headers/EventId.h
         "Event Manager/EventManager.cpp"
         "Event Manager/headers/EventManager.h"
-        Event/headers/EventInitializer.h
 )
+
+add_executable(event_manager_tests
+        "Event Manager/test_fixtures/DummyEvent.cpp"
+        "Event Manager/test/EventManager_test.cpp"
+        "Event Manager/test_fixtures/headers/DummyEvent.h"
+        ${EVENT_SRCS}
+        ${EVENT_HDRS}
+)
+target_link_libraries(event_manager_tests PRIVATE Catch2::Catch2WithMain)
+
 
 include(CTest)
 include(Catch)

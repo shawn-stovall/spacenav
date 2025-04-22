@@ -3,36 +3,37 @@
 
 #ifndef EVENTID_H
 #define EVENTID_H
-#include <functional>
+#include <boost/functional/hash.hpp>
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
-#include <boost/functional/hash.hpp>
+#include <functional>
 
 /**
  * Acts as a primary key for EventBase
  */
 class EventId {
-private:
-    boost::uuids::uuid id;
-public:
-    EventId() : id(boost::uuids::random_generator()()) {}
+ private:
+  boost::uuids::uuid id;
 
-    bool operator==(const EventId& id) const { return this->id == id.id; }
-    bool operator!=(const EventId& id) const { return this->id != id.id; }
+ public:
+  EventId() : id(boost::uuids::random_generator()()) {}
 
-    friend std::hash<EventId>;
+  bool operator==(const EventId& id) const { return this->id == id.id; }
+  bool operator!=(const EventId& id) const { return this->id != id.id; }
+
+  friend std::hash<EventId>;
 };
 
 /**
  * Acts as the hash function for EventId
  */
 namespace std {
-    template<>
-    struct hash<EventId> {
-        size_t operator()(const EventId& id) const noexcept {
-            return boost::hash<boost::uuids::uuid>()(id.id);
-        }
-    };
-}
+template <>
+struct hash<EventId> {
+  size_t operator()(const EventId& id) const noexcept {
+    return boost::hash<boost::uuids::uuid>()(id.id);
+  }
+};
+}  // namespace std
 
-#endif //EVENTID_H
+#endif  // EVENTID_H

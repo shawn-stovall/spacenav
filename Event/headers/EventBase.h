@@ -4,34 +4,41 @@
 
 #ifndef EVENTBASE_H
 #define EVENTBASE_H
-#include <unordered_set>
-
 #include <EventId.h>
+
+#include <unordered_set>
 
 class EventManager;
 
 class EventBase {
-private:
-    const EventManager& event_manager;
+ private:
+  const EventManager& event_manager;
 
-    EventId id{};
-    std::unordered_set<EventId> registered_events;
-protected:
-    EventBase();
-public:
-    virtual ~EventBase() = default;
+  EventId id{};
+  std::unordered_set<EventId> registered_events;
 
-    bool register_event(const EventId& id);
-    bool unregister_event(const EventId& id);
+ protected:
+  EventBase();
 
-    [[nodiscard]] EventId get_id() const { return id; }
+ public:
+  virtual ~EventBase() = default;
 
-    virtual bool run() = 0;
+  bool register_event(const EventId& id);
+  bool unregister_event(const EventId& id);
 
-    EventBase(EventBase&& event) noexcept;
+  [[nodiscard]] EventId get_id() const { return id; }
+
+  virtual bool run() = 0;
+
+  EventBase(EventBase&& event) noexcept;
+
+  class Initializer {
+   protected:
+    Initializer() = default;
+  };
 };
 
-template<typename T>
+template <typename T>
 concept Event = std::is_base_of_v<EventBase, T>;
 
-#endif //EVENTBASE_H
+#endif  // EVENTBASE_H
