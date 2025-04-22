@@ -1,0 +1,46 @@
+\doxysection{Event\+Manager.\+h}
+\hypertarget{_event_manager_8h_source}{}\label{_event_manager_8h_source}\index{Event Manager/headers/EventManager.h@{Event Manager/headers/EventManager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ Created\ by\ Shawn\ Stovall\ on\ 3/26/25.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ EVENTMANAGER\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ EVENTMANAGER\_H}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <EventBase.h>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }EventManager\ \{}
+\DoxyCodeLine{00012\ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00013\ \ \ \textcolor{keyword}{static}\ EventManager\ event\_manager;}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ std::unordered\_map<EventId,\ std::unique\_ptr<EventBase>>\ events;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ EventManager()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \textcolor{keyword}{static}\ EventManager\&\ get\_instance()\ \{\ \textcolor{keywordflow}{return}\ event\_manager;\ \}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keyword}{template}\ <Event\ E>}
+\DoxyCodeLine{00030\ \ \ \mbox{\hyperlink{class_event_id}{EventId}}\ \mbox{\hyperlink{class_event_manager_a974233e3cbf453a1a8fbc96024d311e3}{build\_event}}(\textcolor{keyword}{const}\ \textcolor{keyword}{typename}\ E::Initializer\&\ initializer)\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ std::unique\_ptr<E>\ \textcolor{keyword}{event}\ =\ std::make\_unique<E>(initializer);}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{class_event_id}{EventId}}\ \textcolor{keywordtype}{id}\ =\ \textcolor{keyword}{event}-\/>get\_id();}
+\DoxyCodeLine{00033\ \ \ \ \ events.emplace(\textcolor{keywordtype}{id},\ std::move(event));}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordflow}{return}\ id;}
+\DoxyCodeLine{00035\ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_event_manager_a2cebf687c3c194179d590d581c56dbe2}{kill\_event}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_event_id}{EventId}}\&\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_event_manager_ae82df9efb96c566074a19ea246bd51bc}{run\_event}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_event_id}{EventId}}\&\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \mbox{\hyperlink{class_event_manager}{EventManager}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_event_manager}{EventManager}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00042\ \ \ \mbox{\hyperlink{class_event_manager}{EventManager}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_event_manager}{EventManager}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00043\ \ \ \mbox{\hyperlink{class_event_manager}{EventManager}}\&\ operator=(\mbox{\hyperlink{class_event_manager}{EventManager}}\&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00044\ \ \ \mbox{\hyperlink{class_event_manager}{EventManager}}(\mbox{\hyperlink{class_event_manager}{EventManager}}\&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ EVENTMANAGER\_H}}
+
+\end{DoxyCode}

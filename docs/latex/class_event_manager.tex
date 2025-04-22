@@ -1,0 +1,88 @@
+\doxysection{Event\+Manager Class Reference}
+\hypertarget{class_event_manager}{}\label{class_event_manager}\index{EventManager@{EventManager}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$\mbox{\hyperlink{concept_event}{Event}} E$>$ }\\\mbox{\hyperlink{class_event_id}{Event\+Id}} \mbox{\hyperlink{class_event_manager_a974233e3cbf453a1a8fbc96024d311e3}{build\+\_\+event}} (const typename E\+::\+Initializer \&initializer)
+\item 
+bool \mbox{\hyperlink{class_event_manager_a2cebf687c3c194179d590d581c56dbe2}{kill\+\_\+event}} (const \mbox{\hyperlink{class_event_id}{Event\+Id}} \&id)
+\item 
+bool \mbox{\hyperlink{class_event_manager_ae82df9efb96c566074a19ea246bd51bc}{run\+\_\+event}} (const \mbox{\hyperlink{class_event_id}{Event\+Id}} \&id)
+\item 
+\Hypertarget{class_event_manager_a4e802f57b1f9176a95309b17750c5c6c}\label{class_event_manager_a4e802f57b1f9176a95309b17750c5c6c} 
+{\bfseries Event\+Manager} (const \mbox{\hyperlink{class_event_manager}{Event\+Manager}} \&)=delete
+\item 
+\Hypertarget{class_event_manager_a27b7ccd6ac588cd2cf519d6d9186735f}\label{class_event_manager_a27b7ccd6ac588cd2cf519d6d9186735f} 
+\mbox{\hyperlink{class_event_manager}{Event\+Manager}} \& {\bfseries operator=} (const \mbox{\hyperlink{class_event_manager}{Event\+Manager}} \&)=delete
+\item 
+\Hypertarget{class_event_manager_afa3ead9d4a85dbf98278601b79188520}\label{class_event_manager_afa3ead9d4a85dbf98278601b79188520} 
+\mbox{\hyperlink{class_event_manager}{Event\+Manager}} \& {\bfseries operator=} (\mbox{\hyperlink{class_event_manager}{Event\+Manager}} \&\&)=delete
+\item 
+\Hypertarget{class_event_manager_a863bfd50237bf4283f6f8937cd8f9cc5}\label{class_event_manager_a863bfd50237bf4283f6f8937cd8f9cc5} 
+{\bfseries Event\+Manager} (\mbox{\hyperlink{class_event_manager}{Event\+Manager}} \&\&)=delete
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_event_manager_abba150c408c50009f202e7436a6a52b9}\label{class_event_manager_abba150c408c50009f202e7436a6a52b9} 
+static \mbox{\hyperlink{class_event_manager}{Event\+Manager}} \& {\bfseries get\+\_\+instance} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_event_manager_a974233e3cbf453a1a8fbc96024d311e3}\index{EventManager@{EventManager}!build\_event@{build\_event}}
+\index{build\_event@{build\_event}!EventManager@{EventManager}}
+\doxysubsubsection{\texorpdfstring{build\_event()}{build\_event()}}
+{\footnotesize\ttfamily \label{class_event_manager_a974233e3cbf453a1a8fbc96024d311e3} 
+template$<$\mbox{\hyperlink{concept_event}{Event}} E$>$ \\
+\mbox{\hyperlink{class_event_id}{Event\+Id}} Event\+Manager\+::build\+\_\+event (\begin{DoxyParamCaption}\item[{const typename E\+::\+Initializer \&}]{initializer}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructs an event 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em E} & The derived \doxylink{concept_event}{Event} class that will be built. \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em initializer} & The internal \doxylink{class_event_base_1_1_initializer}{Event\+Base\+::\+Initializer} used to initialize the \doxylink{concept_event}{Event} being built. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The \doxylink{class_event_id}{Event\+Id} of the constructed \doxylink{concept_event}{Event}. 
+\end{DoxyReturn}
+\Hypertarget{class_event_manager_a2cebf687c3c194179d590d581c56dbe2}\index{EventManager@{EventManager}!kill\_event@{kill\_event}}
+\index{kill\_event@{kill\_event}!EventManager@{EventManager}}
+\doxysubsubsection{\texorpdfstring{kill\_event()}{kill\_event()}}
+{\footnotesize\ttfamily \label{class_event_manager_a2cebf687c3c194179d590d581c56dbe2} 
+bool Event\+Manager\+::kill\+\_\+event (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_event_id}{Event\+Id}} \&}]{id}{}\end{DoxyParamCaption})}
+
+Deletes the \doxylink{concept_event}{Event} tied with the \doxylink{class_event_id}{Event\+Id}. \begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]Add a message to all events about deletion of certain event. \end{DoxyRefDesc}
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The \doxylink{class_event_id}{Event\+Id} of the \doxylink{concept_event}{Event} to be deleted \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If any events were deleted. 
+\end{DoxyReturn}
+\Hypertarget{class_event_manager_ae82df9efb96c566074a19ea246bd51bc}\index{EventManager@{EventManager}!run\_event@{run\_event}}
+\index{run\_event@{run\_event}!EventManager@{EventManager}}
+\doxysubsubsection{\texorpdfstring{run\_event()}{run\_event()}}
+{\footnotesize\ttfamily \label{class_event_manager_ae82df9efb96c566074a19ea246bd51bc} 
+bool Event\+Manager\+::run\+\_\+event (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_event_id}{Event\+Id}} \&}]{id}{}\end{DoxyParamCaption})}
+
+Takes an \doxylink{class_event_id}{Event\+Id} and runs the associated \doxylink{concept_event}{Event}. If the evnet does not exist or if even fails to run, returns false. 
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the \doxylink{concept_event}{Event} to be run. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Whether the \doxylink{concept_event}{Event} was run successfully or not. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Event Manager/headers/Event\+Manager.\+h\item 
+Event Manager/Event\+Manager.\+cpp\end{DoxyCompactItemize}
